@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f7fee7;
+  --color-primary-100: #ecfccb;
+  --color-primary-200: #d9f99d;
+  --color-primary-300: #bef264;
+  --color-primary-400: #a3e635;
+  --color-primary-500: #86C232; /* Verde Neón */
+  --color-primary-600: #65a30d;
+  --color-primary-700: #4d7c0f;
+  --color-primary-800: #3f6212;
+  --color-primary-900: #474B24; /* Verde Bosque / Deep Green */
+
+  --color-accent-400: #bef264;
+  --color-accent-500: #86C232;
+  --color-accent-600: #474B24;
+
+  --color-success-400: #bef264;
+  --color-success-500: #86C232;
+  --color-success-600: #474B24;
+
+  --color-warning-400: #facc15;
+  --color-warning-500: #eab308;
+
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  --color-dark-700: #222629; /* Gris Grafito */
+  --color-dark-800: #1a1d1f;
+  --color-dark-900: #060606; /* Negro Carbón */
+  --color-dark-950: #000000;
+
+  /* Semantic Colors */
+  --color-surface-50: var(--bg-surface-50);
+  --color-surface-100: var(--bg-surface-100);
+  --color-surface-200: var(--bg-surface-200);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-surface-50: #f8fafc;
+    --bg-surface-100: #ffffff;
+    --bg-surface-200: #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+  }
+
+  .dark {
+    --bg-surface-50: #060606; /* Negro Carbón */
+    --bg-surface-100: #222629; /* Gris Grafito */
+    --bg-surface-200: #2d3237; /* Grafito Suave */
+    --border-subtle: #313639;
+    --text-main: #FFFFFF; /* Blanco Óptico */
+    --text-muted: #94a3b8;
+  }
+
+  /* Force variables in dark mode for specific elements if needed */
+  :root.dark body {
+    background-color: var(--bg-surface-50);
+    color: var(--text-main);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply bg-surface-50 text-text-main antialiased transition-colors duration-300;
+  }
+}
+
+/* Dynamic branding colors — set via JS in config store */
+:root {
+  --branding-primary: #86C232;
+  --branding-secondary: #474B24;
+}
