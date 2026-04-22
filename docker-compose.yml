@@ -6,6 +6,17 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: club_deportivo_frontend
-    ports:
-      - "8080:80"
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # REEMPLAZAR 'kloggy.com.co' con tu dominio real apuntando al VPS
+      - "traefik.http.routers.frontend_club.rule=Host(`www.kloggy.com.co`)"
+      - "traefik.http.routers.frontend_club.entrypoints=websecure"
+      - "traefik.http.routers.frontend_club.tls.certresolver=letsencrypt"
+      - "traefik.http.services.frontend_club.loadbalancer.server.port=80"
+    networks:
+      - traefik-proxy
+
+networks:
+  traefik-proxy:
+    external: true
